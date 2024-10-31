@@ -53,6 +53,18 @@ dataProvider.login(request: request, completion: completion)
 request: Initialize your request model </br>
 Completion: Handle your API success and failure cases
 
+#### App version error
+
+It's possible while working on the project that you may encounter an error from the API:
+```json
+{
+    "Name":"Moneybox version expired",
+    "Message":"This version of our app is no longer supported. Please update to the latest version in the App Store.",
+    "ValidationErrors":[]
+}
+```
+To resolve please update the app version of your project to match the version of the latest Moneybox app in the app store. 
+
 ## Unit Tests
 The MoneyBoxTests folder includes stubbed data to easily mock the responses needed for unit testing
 

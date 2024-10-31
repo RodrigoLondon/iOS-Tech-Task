@@ -1,0 +1,18 @@
+name: version
+on:
+  schedule:
+     - cron: '0 9 * * 1'
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set git credentials
+        run: |
+          git config user.name "moneyboxbot"
+          git config user.email "ios@moneyboxapp.com"
+          
+      - name: Start lane to bump version
+        run: fastlane version_bump
