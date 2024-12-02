@@ -17,8 +17,10 @@ public extension AppNetworkable {
         var request = getRequest(with: path, httpMethod: httpMethod)
         do {
             request.httpBody = try JSONEncoder().encode(data)
+            print("Headers: \(API.getHeaders())")
+            print("Request Body: \(request)")
         } catch {
-            print("JSON Encode Error")
+            print("JSON Encoding Error: \(error)")
         }
         return request
     }
@@ -38,8 +40,7 @@ public extension AppNetworkable {
                     completion(.failure(NSError.error(with: "Data error")))
                     return
                 }
-                
-                print("The response is : ",String(data: data, encoding: .utf8)!)
+            
                 if let error = error {
                     completion(.failure(error))
                 } else {
@@ -61,7 +62,7 @@ public extension AppNetworkable {
                                 completion(.failure(NSError.error(with: message)))
                                 
                             } catch {
-                                completion(.failure(NSError.error(with: "Https error code: \(httpStatus.statusCode)")))
+                                completion(.failure(NSError.error(with: "Https error code: \(httpStatus.statusCode.description)")))
                             }
                         }
                     } else {

@@ -5,10 +5,15 @@
 //  Created by Zeynep Kara on 20.07.2022.
 //
 
+import Foundation
+
 public protocol DataProviderLogic: AnyObject {
     func login(request: LoginRequest, completion: @escaping ((Result<LoginResponse, Error>) -> Void))
     func fetchProducts(completion: @escaping ((Result<AccountResponse, Error>) -> Void))
     func addMoney(request: OneOffPaymentRequest, completion: @escaping ((Result<OneOffPaymentResponse, Error>) -> Void))
+    
+    
+//    func makeOneOffPayment(request: OneOffPaymentRequest, completion: @escaping (Result<Double, Error>) -> Void)
 }
 
 public class DataProvider: DataProviderLogic {
